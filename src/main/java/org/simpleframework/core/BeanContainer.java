@@ -3,6 +3,7 @@ package org.simpleframework.core;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.simpleframework.aop.annotation.Aspect;
 import org.simpleframework.core.annotation.Component;
 import org.simpleframework.core.annotation.Controller;
 import org.simpleframework.core.annotation.Repository;
@@ -25,11 +26,11 @@ public class BeanContainer {
     // 存储bean实例的载体
     private final Map<Class<?>, Object> beanMap = new ConcurrentHashMap<>();
 
-    // 加载bean的注解列表
+    // 加载bean的注解列表，被注解列表标记的bean才会被添加进容器
     private static final List<Class<? extends Annotation>> BEAN_ANNOTATION
-            = Arrays.asList(Component.class, Controller.class, Service.class, Repository.class);
+            = Arrays.asList(Component.class, Controller.class, Service.class, Repository.class, Aspect.class);
 
-    // 定义私有的枚举类型成员变量
+    // 定义私有的枚举类型成员变量，用来实现单例，防止被反射破解
     private enum ContainerHolder {
         HOLDER;
         private BeanContainer instance;
