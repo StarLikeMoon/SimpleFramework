@@ -9,10 +9,10 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Aspect {
 
-    /**
-     * 需要被织入横切逻辑的注解标签
-     * @return
-     */
-    Class<? extends Annotation> value();
+    // AspectJ支持的横切表达式
+    String pointcut();
+
+    // 不使用AspectJ时支持的joinpoint
+    Class<? extends Annotation> value() default Aspect.class;
 
 }

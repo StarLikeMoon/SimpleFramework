@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
  * Controller标签的横切类，joinpoint就是Controller标签注解的类
  */
 @Slf4j
-@Aspect(value = Service.class)
+@Aspect(pointcut = "within(org.simpleframework.core.annotation.Component)")
 @Order(0)
 public class ServiceTimeCalculatorAspect extends DefalultAspect {
     // 记录时间

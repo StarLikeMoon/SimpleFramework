@@ -1,6 +1,6 @@
 package org.simpleframework.inject;
 
-import cn.chm.Controller.frontend.MainPageController;
+import cn.chm.controller.frontend.MainPageController;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

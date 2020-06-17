@@ -1,12 +1,11 @@
 package org.simpleframework.core;
 
-import cn.chm.Controller.DispatcherServlet;
-import cn.chm.Controller.frontend.MainPageController;
+import cn.chm.controller.DispatcherServlet;
+import cn.chm.controller.frontend.MainPageController;
 import cn.chm.Service.solo.HeadLineService;
 import cn.chm.Service.solo.impl.HeadLineServiceImpl;
 import org.junit.jupiter.api.*;
 import org.simpleframework.core.annotation.Controller;
-import sun.applet.Main;
 
 /**
  * 测试容器的加载

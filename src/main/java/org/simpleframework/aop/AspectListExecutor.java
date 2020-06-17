@@ -9,6 +9,7 @@ import org.simpleframework.util.ValidationUtil;
 import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -58,7 +59,11 @@ public class AspectListExecutor implements MethodInterceptor {
     @Override
     public Object intercept(Object proxy, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
         Object returnValue = null;
+        // AspectJ的精筛
+        collectAccurateMatchedAspectList(method);
         if (ValidationUtil.isEmpty(sortedAspectInfoList)) {
+            // 如果精筛后没有需要执行的切面，就执行被代理类的原方法即可
+            returnValue = methodProxy.invokeSuper(proxy, args);
             return returnValue;
         }
         // 1.按照order的顺序升序执行完所有Aspect的before方法
@@ -73,6 +78,26 @@ public class AspectListExecutor implements MethodInterceptor {
             invokeAfterThrowingAdvices(method, args, e);
         }
         return returnValue;
+    }
+
+    /**
+     * 利用AspectJ的精筛
+     * @param method
+     */
+    private void collectAccurateMatchedAspectList(Method method) {
+        if (ValidationUtil.isEmpty(sortedAspectInfoList)) {
+            return;
+        }
+        // 由于需要边遍历边删除，所以这里用迭代器
+        Iterator<AspectInfo> iterator = sortedAspectInfoList.iterator();
+        while (iterator.hasNext()){
+            AspectInfo aspectInfo = iterator.next();
+            if (!aspectInfo.getPointcutLocator().accurateMatches(method)) {
+                // 精准匹配失败就移除
+                iterator.remove();
+            }
+        }
+
     }
 
     /**

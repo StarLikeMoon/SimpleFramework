@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
  * Controller标签的横切类，joinpoint就是Controller标签注解的类
  */
 @Slf4j
-@Aspect(value = Controller.class)
+@Aspect(pointcut = "execution(* cn.chm.controller.frontend..*.*(..))")
 @Order(0)
 public class ContollerTimeCalculatorAspect extends DefalultAspect {
     // 记录时间

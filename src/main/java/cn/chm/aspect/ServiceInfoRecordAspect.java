@@ -10,7 +10,7 @@ import org.simpleframework.core.annotation.Service;
 import java.lang.reflect.Method;
 
 @Slf4j
-@Aspect(Service.class)
+@Aspect(pointcut = "within(org.simpleframework.core.annotation.Component)")
 @Order(10)
 public class ServiceInfoRecordAspect extends DefalultAspect {
 
