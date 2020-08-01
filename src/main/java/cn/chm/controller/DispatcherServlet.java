@@ -1,7 +1,7 @@
-package cn.chm.Controller;
+package cn.chm.controller;
 
-import cn.chm.Controller.frontend.MainPageController;
-import cn.chm.Controller.superadmin.HeadLineOperationController;
+import cn.chm.controller.frontend.MainPageController;
+import cn.chm.controller.superadmin.HeadLineOperationController;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

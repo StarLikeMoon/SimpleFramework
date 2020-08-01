@@ -1,4 +1,4 @@
-package cn.chm.Controller.superadmin;
+package cn.chm.controller.superadmin;
 
 import cn.chm.Service.solo.HeadLineService;
 import cn.chm.entity.bo.HeadLine;

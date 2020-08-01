@@ -1,8 +1,6 @@
-package cn.chm.Controller.superadmin;
+package cn.chm.controller.superadmin;
 
-import cn.chm.Service.solo.HeadLineService;
 import cn.chm.Service.solo.ShopCategoryService;
-import cn.chm.entity.bo.HeadLine;
 import cn.chm.entity.bo.ShopCategory;
 import cn.chm.entity.dto.Result;
 import org.simpleframework.core.annotation.Controller;

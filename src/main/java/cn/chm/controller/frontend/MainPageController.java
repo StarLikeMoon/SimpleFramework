@@ -1,4 +1,4 @@
-package cn.chm.Controller.frontend;
+package cn.chm.controller.frontend;
 
 import cn.chm.Service.combine.HeadLineShopCategoryCombineService;
 import cn.chm.entity.dto.MainPageInfoDto;
